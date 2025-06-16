@@ -394,9 +394,9 @@ export const shape = {
   borderRadius: 8,
 };
 
-const defaultShadows: Shadows = [
+const defaultShadows = [
   'none',
   'var(--template-palette-baseShadow)',
   ...defaultTheme.shadows.slice(2, 25),
-];
+] as Shadows;
 export const shadows = defaultShadows;
