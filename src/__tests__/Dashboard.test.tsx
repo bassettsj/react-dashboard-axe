@@ -4,9 +4,9 @@ import '@testing-library/jest-dom';
 import Dashboard from '../Dashboard';
 
 describe('Dashboard', () => {
-  it('renders the dashboard component', () => {
+  it('renders the dashboard heading', () => {
     render(<Dashboard />);
-    // Check for a heading or any text you expect in the Dashboard
-    expect(screen.getByText(/dashboard/i)).toBeInTheDocument();
+    // Look for the heading role with the name "Dashboard"
+    expect(screen.getByRole('heading', { name: /dashboard/i })).toBeInTheDocument();
   });
 });
