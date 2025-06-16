@@ -19,6 +19,9 @@
   },
   "description": "https://github.com/mui/material-ui/blob/v7.1.1/docs/data/material/templates/dashboard/Dashboard.tsx",
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@types/jest": "^30.0.0",
     "@types/react": "latest",
     "@types/react-dom": "latest",
     "axe-core": "^4.10.3",
