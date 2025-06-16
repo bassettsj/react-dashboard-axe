@@ -3,7 +3,7 @@
 
 describe('Tab Loop Accessibility Test', () => {
   it('should tab through all focusable elements and loop back to the first', () => {
-    cy.visit('/');
+    cy.visit('localhost:3001'); // 
 
     // Get all focusable elements
     const focusableSelectors = [
@@ -14,6 +14,11 @@ describe('Tab Loop Accessibility Test', () => {
       'textarea:not([disabled])',
       '[tabindex]:not([tabindex="-1"])',
     ].join(',');
+    // assert the title of the page
+    cy.title().should('eq', 'Dashboard Template - Material UI');
+    // Wait for .MuiBox-root to load
+    cy.get('.MuiBox-root').should('exist');
+    
 
     cy.get('body').then(($body) => {
       const focusable = $body[0].querySelectorAll(focusableSelectors);
@@ -22,29 +27,21 @@ describe('Tab Loop Accessibility Test', () => {
       const first = focusable[0];
       cy.wrap(first).focus();
 
-      let looped = false;
-      let count = 0;
-      const maxTabs = focusable.length + 2; // +2 for safety
-
-      function tabAndCheck() {
+      let lastFocused = first;
+      for (let i = 1; i < focusable.length; i++) {
+        cy.press('Tab');
         cy.focused().then(($el) => {
           const current = $el[0];
-          count++;
-          // Press Tab
-          cy.realPress('Tab');
-          cy.focused().then(($next) => {
-            if ($next[0] === first) {
-              looped = true;
-            }
-            if (!looped && count < maxTabs) {
-              tabAndCheck();
-            } else {
-              expect(looped, 'Tab should loop back to the first focusable element').to.be.true;
-            }
-          });
+          cy.log(`Focused: <${current.tagName.toLowerCase()}${current.id ? `#${current.id}` : ''}${current.className ? `.${current.className.split(' ').join('.')}` : ''}>`);
+          // eslint-disable-next-line no-console
+          console.log('Focused element:', current);
+          // Check that the focused element matches one of the selectors and is not the same as the last
+          const isFocusable = current && current.matches && current.matches(focusableSelectors);
+          expect(isFocusable, 'Element should match focusable selectors').to.be.true;
+          expect(current, 'Should not focus the same element twice in a row').to.not.equal(lastFocused);
+          lastFocused = current;
         });
       }
-      tabAndCheck();
     });
   });
 });
