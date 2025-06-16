@@ -21,12 +21,15 @@
   "devDependencies": {
     "@types/react": "latest",
     "@types/react-dom": "latest",
+    "axe-core": "^4.10.3",
     "cypress": "^14.4.1",
+    "cypress-axe": "^1.6.0",
     "react-scripts": "latest"
   },
   "private": true,
   "scripts": {
     "build": "react-scripts build",
+    "cypress:run": "cypress run",
     "eject": "react-scripts eject",
     "start": "react-scripts start",
     "test": "react-scripts test",
