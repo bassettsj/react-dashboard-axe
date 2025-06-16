@@ -58,9 +58,8 @@ function renderStatus(status: 'Online' | 'Offline') {
   return <Chip label={status} color={colors[status]} size="small" />;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function renderAvatar(
-  params: GridCellParams<{ name: string; color: string }, any, any>,
+  params: GridCellParams<{ name: string; color: string }, { name: string; color: string }, unknown>,
 ) {
   if (params.value == null) {
     return '';

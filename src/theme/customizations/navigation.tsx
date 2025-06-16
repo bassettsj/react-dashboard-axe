@@ -9,6 +9,12 @@ import { tabClasses } from '@mui/material/Tab';
 import UnfoldMoreRoundedIcon from '@mui/icons-material/UnfoldMoreRounded';
 import { gray, brand } from '../themePrimitives';
 
+// Fix for react/display-name
+const SelectIconComponent = React.forwardRef<SVGSVGElement, SvgIconProps>((props, ref) => (
+  <UnfoldMoreRoundedIcon fontSize="small" {...props} ref={ref} />
+));
+SelectIconComponent.displayName = 'SelectIconComponent';
+
 /* eslint-disable import/prefer-default-export */
 export const navigationCustomizations: Components<Theme> = {
   MuiMenuItem: {
@@ -58,12 +64,7 @@ export const navigationCustomizations: Components<Theme> = {
   },
   MuiSelect: {
     defaultProps: {
-      IconComponent: Object.assign(
-        React.forwardRef<SVGSVGElement, SvgIconProps>((props, ref) => (
-          <UnfoldMoreRoundedIcon fontSize="small" {...props} ref={ref} />
-        )),
-        { displayName: 'SelectIconComponent' }
-      ),
+      IconComponent: SelectIconComponent,
     },
     styleOverrides: {
       root: ({ theme }) => ({
