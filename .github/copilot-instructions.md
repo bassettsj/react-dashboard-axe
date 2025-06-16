@@ -27,10 +27,32 @@ Welcome, GitHub AI agent! This repository is a pilot playground for autonomous c
    - Leave clear comments in code and pull requests describing what was changed and why.
    - Mark any skipped or deferred tests with TODOs and explanations.
 
+## CI Workflow Overview
+The repository uses a GitHub Actions workflow to automate testing and accessibility checks:
+- Runs on pushes and pull requests to the `main` branch.
+- Steps include:
+  1. Checkout code
+  2. Set up Node.js 20
+  3. Install dependencies with `npm ci`
+  4. Lint with `npm run lint`
+  5. Run tests with `npm test`
+  6. Start the React app (default port: **3001**)
+  7. Wait for the app to be ready (`npx wait-on http://localhost:3001`)
+  8. Run Cypress tests (`npx cypress run`)
+  9. Stop the React app
+- If Cypress tests fail, upload relevant screenshots and logs as workflow artifacts for debugging.
+
 ## Best Practices
 - Use clear, descriptive commit messages.
 - Prefer minimal, targeted changes that address the specific accessibility violation.
 - When in doubt, add comments to explain your reasoning or flag issues for human review.
+- Ensure the React app runs on port 3001 to match the CI workflow, or update the workflow if the port changes.
+- Consider running lint and tests in parallel for faster feedback if modifying the workflow.
+
+## Troubleshooting
+- If the workflow fails at the "Wait for React app" step, verify the app is configured to run on port 3001.
+- If Cypress tests fail, check the uploaded screenshots and logs for details.
+- For persistent CI/CD issues, document the problem and suggest a fix or flag for human review.
 
 ## Example Workflow
 1. Run: `npx cypress run`
