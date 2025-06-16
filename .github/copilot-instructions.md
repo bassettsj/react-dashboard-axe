@@ -42,6 +42,16 @@ The repository uses a GitHub Actions workflow to automate testing and accessibil
   9. Stop the React app
 - If Cypress tests fail, upload relevant screenshots and logs as workflow artifacts for debugging.
 
+## Setup for Cypress Accessibility Tests
+
+- **Before running Cypress tests, you must start the React development server locally.**
+- The app should run on [http://localhost:3001](http://localhost:3001) to match the CI workflow and Cypress expectations.
+- Start the server in a separate terminal:
+  ```sh
+  npm start
+  ```
+- If you change the port, update the Cypress configuration and CI workflow accordingly.
+
 ## Best Practices
 - Use clear, descriptive commit messages.
 - Prefer minimal, targeted changes that address the specific accessibility violation.
@@ -55,11 +65,12 @@ The repository uses a GitHub Actions workflow to automate testing and accessibil
 - For persistent CI/CD issues, document the problem and suggest a fix or flag for human review.
 
 ## Example Workflow
-1. Run: `npx cypress run`
-2. Parse test output for accessibility violations.
-3. Search for the relevant code (e.g., missing aria-label, missing heading, etc.).
-4. Apply a fix and commit the change.
-5. Re-run tests to verify the fix.
-6. Repeat until all actionable issues are resolved.
+1. Start the development server (`npm start`) and ensure it is running on port 3001.
+2. Run: `npx cypress run`
+3. Parse test output for accessibility violations.
+4. Search for the relevant code (e.g., missing aria-label, missing heading, etc.).
+5. Apply a fix and commit the change.
+6. Re-run tests to verify the fix.
+7. Repeat until all actionable issues are resolved.
 
 Thank you for helping make this dashboard more accessible!

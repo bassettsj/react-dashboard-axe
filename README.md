@@ -45,10 +45,11 @@ This repository serves as a pilot playground to experiment with using OpenAI's C
    npm install
    ```
 
-2. **Start the development server:**
+2. **Start the development server (required for Cypress tests):**
    ```sh
    npm start
    ```
+   By default, the app runs on [http://localhost:3001](http://localhost:3001). Cypress tests expect the server to be running on this port. If you change the port, update the Cypress configuration accordingly.
 
 3. **Run the linter:**
    ```sh
