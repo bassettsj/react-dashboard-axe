@@ -9,7 +9,7 @@ This repository is used for evaluating GitHub Copilot agents and their ability t
 - Use automated tools such as [cypress-axe](https://github.com/component-driven/cypress-axe)
 - Demonstrate agent-driven workflows for code improvement
 
-**Note:** Most of the code is generated or adapted from the official MUI dashboard template. All fixes and improvements will be made using Copilot agent-driven automation.
+**Note:** Most of the code is generated or adapted from the official MUI dashboard template. 
 
 ## Pilot Project: Using OpenAI Codex as a Coding Agent
 
