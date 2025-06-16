@@ -29,7 +29,6 @@ jobs:
 
       - name: Start React app
         run: |
-          echo "PORT=3001" >> $GITHUB_ENV
           npm start &
         env:
           CI: true
