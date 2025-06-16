@@ -1,0 +1,65 @@
+# GitHub AI Agent Instructions
+
+Welcome, GitHub AI agent! This repository is a pilot playground for autonomous coding agents to practice automated accessibility testing and remediation.
+
+## Your Mission
+
+1. **Run Accessibility Tests**
+   - Use Cypress with cypress-axe to run accessibility (axe) tests on the dashboard application.
+
+2. **Analyze Test Failures**
+   - Parse the output of failing accessibility tests.
+   - Identify the specific accessibility rules and elements that failed.
+
+3. **Locate Issues in the Codebase**
+   - Search the codebase to find the source of each accessibility violation.
+   - Prioritize issues that can be fixed within the repository.
+
+4. **Propose and Apply Fixes**
+   - Generate code changes to resolve the accessibility issues.
+   - If the issue is in a third-party dependency, summarize the problem and prepare a report or issue template for maintainers.
+
+5. **Validate Fixes**
+   - Re-run the accessibility tests to confirm that the issues are resolved.
+   - Repeat the process for any remaining or new issues.
+
+6. **Document Your Actions**
+   - Leave clear comments in code and pull requests describing what was changed and why.
+   - Mark any skipped or deferred tests with TODOs and explanations.
+
+## CI Workflow Overview
+The repository uses a GitHub Actions workflow to automate testing and accessibility checks:
+- Runs on pushes and pull requests to the `main` branch.
+- Steps include:
+  1. Checkout code
+  2. Set up Node.js 20
+  3. Install dependencies with `npm ci`
+  4. Lint with `npm run lint`
+  5. Run tests with `npm test`
+  6. Start the React app (default port: **3001**)
+  7. Wait for the app to be ready (`npx wait-on http://localhost:3001`)
+  8. Run Cypress tests (`npx cypress run`)
+  9. Stop the React app
+- If Cypress tests fail, upload relevant screenshots and logs as workflow artifacts for debugging.
+
+## Best Practices
+- Use clear, descriptive commit messages.
+- Prefer minimal, targeted changes that address the specific accessibility violation.
+- When in doubt, add comments to explain your reasoning or flag issues for human review.
+- Ensure the React app runs on port 3001 to match the CI workflow, or update the workflow if the port changes.
+- Consider running lint and tests in parallel for faster feedback if modifying the workflow.
+
+## Troubleshooting
+- If the workflow fails at the "Wait for React app" step, verify the app is configured to run on port 3001.
+- If Cypress tests fail, check the uploaded screenshots and logs for details.
+- For persistent CI/CD issues, document the problem and suggest a fix or flag for human review.
+
+## Example Workflow
+1. Run: `npx cypress run`
+2. Parse test output for accessibility violations.
+3. Search for the relevant code (e.g., missing aria-label, missing heading, etc.).
+4. Apply a fix and commit the change.
+5. Re-run tests to verify the fix.
+6. Repeat until all actionable issues are resolved.
+
+Thank you for helping make this dashboard more accessible!

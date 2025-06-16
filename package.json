@@ -19,16 +19,22 @@
   },
   "description": "https://github.com/mui/material-ui/blob/v7.1.1/docs/data/material/templates/dashboard/Dashboard.tsx",
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@types/jest": "^30.0.0",
     "@types/react": "latest",
     "@types/react-dom": "latest",
+    "axe-core": "^4.10.3",
     "cypress": "^14.4.1",
+    "cypress-axe": "^1.6.0",
     "react-scripts": "latest"
   },
   "private": true,
   "scripts": {
     "build": "react-scripts build",
+    "cypress:run": "cypress run",
     "eject": "react-scripts eject",
-    "start": "react-scripts start",
+    "start": "PORT=3001 react-scripts start",
     "test": "react-scripts test",
     "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'"
   },
