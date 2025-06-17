@@ -33,11 +33,19 @@ describe('Tab Loop Accessibility Test', () => {
     cy.press('Tab');
     cy.focused().should('have.attr', 'aria-label', 'Open notifications');
     cy.press('Tab');
-    // @TODO fix the button missing name here
-    // cy.focused().should('have.attr', 'aria-label', 'Toggle Theme');
+    cy.focused().should('have.attr', 'aria-label', 'Toggle theme');
     cy.press('Tab');
     cy.focused().should('have.text', 'Get insights');
-    
-    
+    cy.press('Tab');
+    cy.focused().should('have.attr', 'aria-label', 'Select all rows');
+    cy.press('Tab');
+    cy.focused().should('have.text', '20');
+    cy.press('Tab');
+    cy.focused().should('have.attr', 'aria-label', 'Go to next page');
+    cy.press('Tab');
+    cy.focused().should('have.text', 'Home');
+    cy.press('Tab');
+    cy.focused().should('have.text', 'Sitemark');
+    // Done with tabbing through all elements
   });
 });

@@ -1,4 +1,5 @@
 {
+  "name": "react-dashboard",
   "dependencies": {
     "@emotion/react": "latest",
     "@emotion/styled": "latest",

@@ -49,6 +49,8 @@ export default function ColorModeIconDropdown(props: IconButtonOwnProps) {
         onClick={handleClick}
         disableRipple
         size="small"
+        // Fixed by copilot agent
+        aria-label="Toggle theme"
         aria-controls={open ? 'color-scheme-menu' : undefined}
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
