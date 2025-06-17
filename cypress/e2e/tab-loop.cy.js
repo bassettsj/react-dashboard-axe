@@ -1,5 +1,5 @@
 // cypress/e2e/tab-loop.cy.js
-// Cypress test to tab through all focusable elements on the dashboard page until it loops back to the first element
+// Cypress test to tab through all focusable elements on the dashboard page until it loops back to the first
 
 describe('Tab Loop Accessibility Test', () => {
   it('should tab through all focusable elements and loop back to the first', () => {
@@ -33,7 +33,7 @@ describe('Tab Loop Accessibility Test', () => {
     cy.press('Tab');
     cy.focused().should('have.attr', 'aria-label', 'Open notifications');
     cy.press('Tab');
-    cy.focused().should('have.attr', 'aria-label', 'Toggle theme');
+    cy.focused().should('have.attr', 'aria-label', 'Theme Selector');
     cy.press('Tab');
     cy.focused().should('have.text', 'Get insights');
     cy.press('Tab');
